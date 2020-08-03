@@ -20,11 +20,23 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('DB_NAME', 'nome_do_banco'),
+#         'USER': os.environ.get('DB_USER', 'nome_do_user'),
+#         'PASSWORD': os.environ.get('DB_PASS', 'senha_do_user'),
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sgaap',
+        'USER': 'sgaap',
+        'PASSWORD': 'sgaap@server',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
