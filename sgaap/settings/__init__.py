@@ -1,1 +1,1 @@
-from  thiago import *
+from  .thiago import *
