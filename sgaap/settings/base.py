@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sgaapapp',
+    'usuarioapp',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/sgaap/static/',
 ]
+
+
+#EMail
+EMAIL_HOST_USER = "ti.prefeitura.araquari@gmail.com"

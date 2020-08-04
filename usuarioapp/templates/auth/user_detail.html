@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_auth %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/auth.css" %}'>
+{% endblock %}
+{% block css_usuarioapp %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/usuarioapp.css" %}'>
+{% endblock %}
+{% block title %}Perfil do Usuário{% endblock %}
+{% block body_block %}
+    <!--<div class="ui centered stackable grid">-->
+        <!--<div class="two wide column"></div>-->
+        <div class="ten wide column">
+                <div class="ui segment"> <div class="header"> <a class="ui ribbon red label"><h3>Perfil do Usuário</h3></a></div>
+
+            <!--<div class="ui basic segment">-->
+                <!--<h1 class="ui header"> Perfil do Usuário</h1>-->
+            <!--</div>-->
+            {% if message_sucess %}
+                <p class="ui positive icon message">
+                    <i class="close icon"></i>
+                    <i class="check circle icon"></i>
+                    <span class="content">
+                        <span class="header">
+                           Atualizado com sucesso!
+                        </span>
+                        <span> Seu perfil foi atualizado com sucesso.</span><a href="/">Clique aqui para voltar à página inicial.</a>
+                    </span>
+                </p>
+            {% endif %}
+            <div class="ui stackable grid">
+                <div class="four wide center stackable center middle aligned column">
+                    <h1 class="ui center aligned icon header">
+                        <i class="user icon"></i>
+                        Perfil
+                    </h1>
+                </div>
+                <div class="twelve wide column">
+                    <div class="row">
+                        <div class="ui large ribbon label">Nome Completo</div>
+                    <p class="ui small header">{{ object.first_name|title }} {{ object.last_name|title }}</p>
+                    <p class="ui divider"></p>
+                        <div class="ui large ribbon label">E-mail</div>
+                    <p class="ui small header">{{ object.email|lower }}</p>
+                    <p class="ui divider"></p>
+                    </div>
+                </div>
+                <div class="sixteen wide column">
+                     <!--<div class="ui two buttons">-->
+                <!--<a href="{{ request.META.HTTP_REFERER }}" class="ui button fluid ">Voltar</a>-->
+                <!--<input class="ui button fluid black" type="submit" value="Salvar"/>-->
+            <!--</div>-->
+                    <div class="botaos">
+                        <a href="{% url 'user-profile-edit' %}" class="ui button right floated e-green-button empilha green">Editar
+                            Perfil</a>
+                        <a href="{% url 'password_change' %}" class="ui button right floated e-red-button empilha blue">Alterar
+                            Senha</a>
+                        <a href="{{ request.META.HTTP_REFERER }}" class="ui button empilha red">Voltar</a>
+
+                    </div>
+                </div>
+            </div>
+        <!--</div>-->
+<!---->
+        <!--<div class="two wide column"></div>-->
+    </div>
+{% endblock %}

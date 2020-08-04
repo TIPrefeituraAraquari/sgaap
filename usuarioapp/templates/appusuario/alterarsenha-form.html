@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Alterar Senha{% endblock %}
+{% block css_usuarioapp %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/usuarioapp.css" %}'>
+{% endblock %}
+{% block body_block %}
+    <!--<div class="ui stackable grid">-->
+        <!--<div class="two wide column"></div>-->
+        <div class="ten wide column">
+            <div class="ui stackable very padded segment">
+                <h1 class="ui header">Alteração de Senha</h1>
+                <form method="post" class="ui form">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="ui red message">
+                            <div class="header">
+                                {% if form.errors.items|length == 1 %}
+                                    <p>Corrija o campo abaixo.</p>{% else %}
+                                    <p>Corrija os campos abaixo.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if form.old_password.errors %}
+                        <div class="ui red message">
+                            <div class="header">
+                                {{ form.old_password.errors }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="field">
+                        <label>{{ form.old_password.label_tag }}</label>
+                        {{ form.old_password }}
+                    </div>
+
+                    {% if form.new_password1.help_text %}
+                        <div class="ui info message">{{ form.new_password1.help_text|safe }}</div>
+                    {% endif %}
+
+                    <div class="field">
+                        <label>{{ form.new_password1.label_tag }}</label>
+                        {{ form.new_password1 }}
+                    </div>
+
+                    {% if form.new_password1.errors %}
+                        <div class="ui red message">
+                            <div class="header">
+                                {{ form.new_password1.errors }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+                    {% if form.new_password2.errors %}
+                        <div class="ui red message">
+                            <div class="header">
+                                {{ form.new_password2.errors }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="field">
+                        <label>{{ form.new_password2.label_tag }}</label>
+                        {{ form.new_password2 }}
+                    </div>
+
+                    {% if form.new_password2.help_text %}
+                        <div class="help">{{ form.new_password2.help_text|safe }}</div>
+                    {% endif %}
+
+
+                     <div class="ui two buttons">
+                <a href="{{ request.META.HTTP_REFERER }}" class="ui button fluid red">Voltar</a>
+                <input class="ui button fluid black blue" type="submit" id="alterar-senha" value="Salvar"/>
+            </div>
+                    <!--<a href="{{ request.META.HTTP_REFERER }}" class="ui left floated button">Voltar</a>-->
+
+                    <!--<button type="submit" name="submit" class="ui right floated button green e-green-button"-->
+                            <!--value="Trocar minha senha" id="alterar-senha">Alterar senha-->
+                    <!--</button>-->
+                </form>
+            </div>
+        </div>
+        <!--<div class="two wide column"></div>-->
+    <!--</div>-->
+{% endblock %}

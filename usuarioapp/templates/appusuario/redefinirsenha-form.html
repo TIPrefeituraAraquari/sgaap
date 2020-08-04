@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Redefenir Senha{% endblock %}
+{% block css_usuarioapp %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/usuarioapp.css" %}'>
+{% endblock %}
+{% block body_block %}
+    <!--<div class="ui basic stackable segment grid">-->
+        <!--<div class="two wide column"></div>-->
+        <!--<div class="twelve wide column">-->
+        <div class="ten wide column">
+            <div class="ui very padded segment">
+                <h1 class="ui header">Redefinir Senha</h1>
+                <div class="ui info message">
+                    <ul class="list">
+                        <li>Insira seu e-mail para recuperação da senha.</li>
+                    </ul>
+                </div>
+                <form method="post" class="ui form">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label><i class="mail icon"></i>E-mail:</label>
+                        {#                        <label> {{ form.email.help_text }}</label>#}
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="ui pointing red basic label">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="ui basic right aligned segment">
+                          <a href="{{ request.META.HTTP_REFERER }}" class="ui left floated button">Voltar</a>
+                        <input class="ui green right floated button e-green-button" name="submit" type="submit" value="Enviar"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--<div class="two wide column"></div>-->
+    <!--</div>-->
+{% endblock %}

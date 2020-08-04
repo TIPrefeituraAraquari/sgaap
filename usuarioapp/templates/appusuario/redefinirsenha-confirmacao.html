@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Redefenir Senha{% endblock %}
+{% block css_usuarioapp %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/usuarioapp.css" %}'>
+{% endblock %}
+{% block body_block %}
+    {% if validlink %}
+        <!--<div class="ui basic segment grid">-->
+            <!--<div class="two wide column"></div>-->
+            <!--<div class="twelve wide column">-->
+            <div class="ten wide column">
+                <div class="ui very padded segment">
+                    <h1 class="ui header"> Redefinir Senha</h1>
+                    <form method="post" class="ui form">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label><i class="lock icon"></i>Nova Senha:</label>
+                            {{ form.new_password1 }}
+                            {% if form.new_password1.errors %}
+                                <div class="field">
+                                    <input type="text" placeholder="Nova Senha">
+                                    <div class="ui pointing red basic label">
+                                        {{ form.new_password1.errors }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="ui info message">
+                            <ul class="list">
+                                <li>Sua senha não pode ser tão parecida com suas outras informações pessoais.</li>
+                                <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                                <li>Sua senha não pode ser uma senha habitualmente utilizada.</li>
+                                <li>Sua senha não pode ser inteiramente numérica.</li>
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <label><i class="lock  icon"></i>Digite Novamente:</label>
+                            <label> {{ form.new_password2.help_text }}</label>
+                            {{ form.new_password2 }}
+                            {% if form.new_password2.errors %}
+                                <div class="field">
+                                    <input type="text" placeholder="Digite Novamente">
+                                    <div class="ui pointing red basic label">
+                                        {{ form.new_password2.errors }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="ui basic right aligned segment">
+                            <input type="submit" name="submit" class="ui button green e-green-button" value="Enviar"/>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            <!--</div>-->
+            <!--<div class="two wide column grid"></div>-->
+        <!--</div>-->
+
+    {% else %}
+        <!--<div class="ui basic segment grid">-->
+            <!--<div class="four wide column"></div>-->
+            <!--<div class="eight wide column">-->
+            <div class="ten wide column">
+                <div class="ui very padded segment">
+                    <h1 class="ui header">Redefinir Senha</h1>
+                    <div class="ui negative large message">
+                        <div class="header">
+                            Impossível realizar alteração de senha!
+                        </div>
+                        <p>O link para alteração de senha é inválido, possivelmente já tenha sido utilizado.
+                            Por favor, solicite novamente a alteração de senha clicando <a
+                                    href="{% url 'password-reset' %}">AQUI</a>.
+                        </p>
+                    </div>
+                </div>
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+
+    {% endif %}
+{% endblock %}

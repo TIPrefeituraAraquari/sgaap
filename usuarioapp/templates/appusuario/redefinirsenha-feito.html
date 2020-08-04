@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Redefenir Senha{% endblock %}
+{% block css_usuarioapp %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/usuarioapp.css" %}'>
+{% endblock %}
+{% block body_block %}
+    <!--<div class="ui basic stackable segment grid">-->
+        <!--<div class="two wide column"></div>-->
+        <!--<div class="twelve wide column">-->
+        <div class="ten wide column">
+            <div class="ui very padded segment">
+                <h1 class="ui header">Redefinir Senha</h1>
+                <div class="ui positive icon message">
+                    <i class="close icon"></i>
+                    <i class="check circle icon"></i>
+                    <span class="content">
+                        <div class="header">
+                            Pronto!
+                        </div>
+                        <p>
+                            Em instantes você receberá um e-mail com instruções para redefinição de senha.
+                        </p>
+                        <p>
+                            Se você não receber o e-mail, por favor verifique se você digitou o endereço de e-mail correto.
+                        </p>
+                        <a href="/">Clique aqui para voltar à página inicial.</a>
+                    </span>
+                </div>
+            </div>
+            </div>
+        <!--</div>-->
+        <!--<div class="two wide column"></div>-->
+    <!--</div>-->
+{% endblock %}
