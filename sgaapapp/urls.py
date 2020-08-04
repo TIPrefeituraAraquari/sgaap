@@ -7,4 +7,5 @@ from .views.home import HomeView
 urlpatterns = [
     url(r'/home', HomeView.as_view(),name='home'),
     url(r'', HomeView.as_view(),name='home'),
+
 ]
