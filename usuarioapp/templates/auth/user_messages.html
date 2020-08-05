@@ -1,48 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css_auth %}
-    <link rel="stylesheet" type="text/css" href='{% static "css/auth.css" %}'>
-{% endblock %}
+
 {% block title %}Cadastrado com sucesso{% endblock %}
 
-{% block css_usuarioapp %}
+{% block css_block %}
     <link rel="stylesheet" type="text/css" href='{% static "css/usuarioapp.css" %}'>
 {% endblock %}
 {% block active_cadastro %}active{% endblock %}
 {% block body_block %}
-    <div class="ui basic segment grid">
-        <div class="four wide column"></div>
-        <div class="eight wide column">
-            <div class="ui very padded segment">
-                <h1 class="ui header greenTitle">Cadastre-se</h1>
-                <div class="ui positive icon message">
-                    <i class="close icon"></i>
-                    <i class="check circle icon"></i>
-                    <span class="content">
-                         <span class="header">
-                            Cadastro efetuado com sucesso!
-                        </span>
-                        <p>Em instantes você receberá um e-mail com instruções para ativar sua conta.</p>
+<section class="p-3">
+
+</section>
+<section class="p-5">
+
+</section>
+
+<div class="container">
+<div class="card text-center">
+  <h5 class="card-header">Cadastro efetuado com sucesso!</h5>
+  <div class="card-body">
+    <h5 class="card-title">Obrigado pelo seu cadastro</h5>
+         <p>Em instantes você receberá um e-mail com instruções para ativar sua conta.</p>
                         <p>Por favor acesse a url enviada no seu e-mail para o seu primeiro acesso ao sistema.</p>
-                    </span>
-                </div>
+<!--    <a href="#" class="btn btn-primary">Visitar</a>-->
+      <a href="{{request.META.HTTP_REFERER}}" class="btn btn-danger">Voltar</a>
+            <a href="{% url 'home' %}" class="btn btn-primary">Clique aqui para voltar à página inicial.</a>
 
-                <div class="ui info icon message">
-                    <i class="close icon"></i>
-                    <i class="info circle icon"></i>
-                    <span class="content">
-                         <span class="header">
-                            Retorne a página inicial
-                         </span>
-
-                        <p>Enquanto aguada o e-mail ser enviado, você pode visualizar os eventos do sistema.</p>
-                        <a href="{% url 'home' %}">Clique aqui para voltar à página inicial.</a>
-                    </span>
-                </div>
-                <a href="{{request.META.HTTP_REFERER}}" class="ui button">Voltar</a>
-            </div>
-        </div>
-        <div class="four wide column"></div>
-    </div>
-
+  </div>
+</div></div>
 {% endblock %}

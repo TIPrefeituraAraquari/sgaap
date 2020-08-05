@@ -1,97 +1,79 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css_usuarioapp %}
-    <link rel="stylesheet" type="text/css" href='{% static "css/usuarioapp.css" %}'>
-    <link rel="stylesheet" type="text/css" href='{% static "css/auth.css" %}'>
+{% block css_block %}
+
 {% endblock %}
 {% block title %}Cadastre-se{% endblock %}
 {% block active_cadastro %}active{% endblock %}
 {% block body_block %}
-    <!--<div class="ui basic segment centered stackable grid">-->
-        <div class="ui  ten wide column">
-                 <div class="ui segment"> <div class="header"> <a class="ui ribbon red label"><h3>Cadastre-se</h3></a></div>
+<section class="p-3">
 
-            <!--<h1 class="ui header">Cadastre-se</h1>-->
-            {% if form.errors %}
-                <p class="ui error message">
-                    <i class="close icon"></i>
-                    <span class="header">
-                        Verifique os erros abaixo!
-                    </span>
-                </p>
-            {% endif %}
-            <form novalidate class="ui large form" action="{% url 'user-add' %}" method="post" id="">
-                {% csrf_token %}
-                <div class="field">
-                    <label><i class="user icon"></i>{{ form.first_name.label }}:</label>
-                    {{ form.first_name }}
-                    {% if form.first_name.errors %}
-                        <span class="ui pointing red basic label">
-                                {{ form.first_name.errors }}
-                        </span>
-                    {% endif %}
+</section>
+<section class="p-4">
+
+</section>
+<section class="container col-md-8 px-2 ">
+    {% if form.errors %}
+
+    teste
+    {%endif%}
+    <div class="card">
+        <form novalidate class="" action="{% url 'user-add' %}" method="post" id="">
+
+            {% csrf_token %}
+            <div class="card-header"><strong>Cadastro de Usuário</strong> <small></small></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="first_name">Nome</label>
+                        <!--                        <input type="text" class="form-control" name="{{ form.first_name.name }}"  id="first_name" required  placeholder="Nome">-->
+                        {{ form.first_name }}
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label for="last_name">Sobrenome</label>
+                        <!--                        <input class="form-control" id="last_name" type="text" placeholder="Sobrenome">-->
+                        {{ form.last_name }}
+
+                    </div>
                 </div>
-                <div class="field">
-                    <label><i class="user icon"></i>{{ form.last_name.label }}:</label>
-                    {{ form.last_name }}
-                    {% if form.last_name.errors %}
-                        <span class="ui pointing red basic label">
-                                {{ form.last_name.errors }}
-                        </span>
-                    {% endif %}
-                </div>
-                <div class="field">
-                    <label><i class="mail icon"></i>E-mail:</label>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <!--                    <input class="form-control" id="email" type="text" placeholder="Email">-->
                     {{ form.email }}
-                    {% if form.email.errors %}
-                        <span class="ui pointing red basic label">
-                                {{ form.email.errors }}
-                        </span>
-                    {% endif %}
+
                 </div>
 
-                <div class="ui tiny info icon message">
-                    <i class="close icon"></i>
-                    <ul class="list">
-                        <li>Sua senha não pode ser tão parecida com suas outras informações pessoais.</li>
-{#                        <li>Sua senha precisa conter pelo menos 8 caracteres.</li>#}
-                        <li>Sua senha não pode ser uma senha habitualmente utilizada.</li>
-{#                        <li>Sua senha não pode ser inteiramente numérica.</li>#}
-                    </ul>
-                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="password">Senha </label>
+                        <!--                        <input class="form-control" id="password" type="text" placeholder="******">-->
+                        {{ form.password }}
 
-                <div class="field">
-                    <label><i class="lock icon"></i>{{ form.password.label }}:</label>
-                    {{ form.password }}
-                    {% if form.password.errors %}
-                        <span class="ui pointing red basic label">
-                                {{ form.password.errors }}
-                        </span>
-                    {% endif %}
-                </div>
-                <div class="field">
-                    <label><i class="lock icon"></i>{{ form.password_checker.label }}:</label>
-                    {{ form.password_checker }}
-                    {% if form.password_checker.errors %}
-                        <span class="ui pointing red basic label">
-                                {{ form.password_checker.errors }}
-                        </span>
-                    {% endif %}
-                </div>
-                <div class="botaos">
-                    <a href="{{ request.META.HTTP_REFERER }}" class="ui button empilha red">Voltar</a>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="check-password">Confirmar Senha</label>
+                        <!--                        <input class="form-control" id="check-password" type="text" placeholder="*****">-->
+                        {{ form.password_checker }}
 
-                    <button class="ui button right floated e-green-button empilha green" type="submit">
-                        Salvar
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer" >
+                <a href="{{ request.META.HTTP_REFERER }}" class="ui button empilha red">
+                    <button class="btn btn-danger" type="reset">
+                        Voltar
                     </button>
+                </a>
+                <div class="btn-group float-right" role="group">
+                                    <button class="btn  float-right btn-danger" type="reset"> Reset</button>
 
-                    <a class="ui button right floated e-red-button empilha blue" href="/">
-                        Cancelar
-                    </a>
+                <button class="btn    btn-primary" type="submit"> Submit</button>
+
                 </div>
-            </form>
-                            </div>
-
-        <!--</div>-->
-    <!--</div>-->
+            </div>
+        </form>
+    </div>
+    </div>
+</section>
 {% endblock %}

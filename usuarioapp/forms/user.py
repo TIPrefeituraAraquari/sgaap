@@ -6,13 +6,24 @@ from usuarioapp.forms.validation.email import *
 
 class UserForm(ModelForm):
     first_name = forms.CharField(required=True, label='Primeiro Nome',
-                                 widget=forms.TextInput(attrs={'placeholder': 'Primeiro Nome'}))
+                                 widget=forms.TextInput(attrs={'placeholder': 'Primeiro Nome',
+                                                               'class': 'form-control'}))
     last_name = forms.CharField(required=True, label='Último Nome',
-                                widget=forms.TextInput(attrs={'placeholder': 'Sobrenome'}))
+                                widget=forms.TextInput(attrs={'placeholder': 'Sobrenome',
+                                                              'class': 'form-control'
+                                                              }))
     email = forms.EmailField(required=True, label='Email',
-                             widget=forms.EmailInput(attrs={'placeholder': 'exemplo@exemplo.com'}))
-    password = forms.CharField(required=True, label='Senha', widget=forms.PasswordInput)
-    password_checker = forms.CharField(required=True, label='Confirmar Senha', widget=forms.PasswordInput)
+                             widget=forms.EmailInput(attrs={'placeholder': 'exemplo@exemplo.com',
+                                                            'class': 'form-control'
+                                                            }))
+    password = forms.CharField(required=True, label='Senha', widget=forms.PasswordInput(
+                                                            attrs={'placeholder': '******',
+                                                            'class': 'form-control'
+                                                            }))
+    password_checker = forms.CharField(required=True, label='Confirmar Senha', widget=forms.PasswordInput(
+                                                            attrs={'placeholder': '******',
+                                                            'class': 'form-control'
+                                                            }))
 
     def clean_password_checker(self):
         if 'password' in self.cleaned_data:

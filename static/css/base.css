@@ -18,6 +18,16 @@ color:black;
 .bg-black {
   background-color: #000 !important;
 }
+/*nav{
+position:sticky !important;
+
+}*/
+footer{
+    min-height: 15% !important;
+    margin-top: 7% !important;
+    margin-bottom: 0em !important;
+    color: white;
+}
 .navbar-custom {
   padding-top: 1rem;
   padding-bottom: 1rem;
